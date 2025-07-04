@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+                <div class="timeline-item">
+                    <div class="timeline-icon<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timeline - Programa DaaS Brasil</title>
+    <title>DaaS Brasil Program Timeline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,310 +14,326 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
+        .timeline-container {
             background: white;
             border-radius: 20px;
+            padding: 3rem 2rem;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
+            max-width: 1400px;
+            width: 100%;
         }
 
         .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            padding: 40px;
             text-align: center;
+            margin-bottom: 3rem;
             position: relative;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
         }
 
         .language-selector {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
+            top: 0;
+            right: 0;
+            display: flex;
+            gap: 0.5rem;
         }
 
         .language-toggle {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
-            padding: 8px 20px;
+            background: #667eea;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
             color: white;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
-            backdrop-filter: blur(10px);
-            margin: 0 5px;
+            font-size: 0.9rem;
         }
 
         .language-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: #5a67d8;
         }
 
         .language-toggle.active {
-            background: rgba(255, 255, 255, 0.9);
-            color: #2c3e50;
+            background: #2d3748;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #2d3748;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #718096;
+            font-weight: 500;
         }
 
         .timeline {
             position: relative;
-            padding: 60px 40px;
+            margin: 3rem 0;
         }
 
-        .timeline::before {
-            content: '';
+        .timeline-line {
             position: absolute;
-            top: 0;
-            left: 50%;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, #3498db, #2ecc71, #f39c12, #e74c3c, #9b59b6, #34495e);
-            transform: translateX(-50%);
+            top: 160px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(to right, #3498db, #2ecc71, #f39c12, #e74c3c, #9b59b6);
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        .timeline-items {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .timeline-item {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             position: relative;
-            margin: 50px 0;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
         }
 
-        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            width: 24px;
-            height: 24px;
-            background: white;
-            border: 5px solid;
+        .timeline-icon {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 3;
         }
 
-        .timeline-content {
-            width: 47%;
-            padding: 35px;
+        .phase-0 { background: #3498db; }
+        .phase-1 { background: #2ecc71; }
+        .phase-2 { background: #f39c12; }
+        .phase-3 { background: #e74c3c; }
+        .phase-4 { background: #9b59b6; }
+
+        .timeline-period {
+            background: inherit;
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .milestone-card {
             background: white;
             border-radius: 15px;
+            padding: 1.8rem 1.5rem;
+            margin: 0 0.5rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
+            border-top: 5px solid;
+            max-width: 220px;
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .timeline-content:hover {
-            transform: translateY(-5px);
+        .milestone-card:hover {
+            transform: translateY(-8px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 53%;
-        }
+        .milestone-card.phase-0 { border-top-color: #3498db; }
+        .milestone-card.phase-1 { border-top-color: #2ecc71; }
+        .milestone-card.phase-2 { border-top-color: #f39c12; }
+        .milestone-card.phase-3 { border-top-color: #e74c3c; }
+        .milestone-card.phase-4 { border-top-color: #9b59b6; }
 
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-left: 0;
-        }
-
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 30px;
-            width: 0;
-            height: 0;
-            border: 15px solid transparent;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -30px;
-            border-left-color: white;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -30px;
-            border-right-color: white;
-        }
-
-        .release-0 { border-left: 5px solid #3498db; }
-        .release-1 { border-left: 5px solid #2ecc71; }
-        .release-2 { border-left: 5px solid #f39c12; }
-        .release-3 { border-left: 5px solid #e74c3c; }
-        .events { border-left: 5px solid #9b59b6; }
-        .closure { border-left: 5px solid #34495e; }
-
-        .release-0::before { border-color: #3498db; }
-        .release-1::before { border-color: #2ecc71; }
-        .release-2::before { border-color: #f39c12; }
-        .release-3::before { border-color: #e74c3c; }
-        .events::before { border-color: #9b59b6; }
-        .closure::before { border-color: #34495e; }
-
-        .timeline-title {
-            font-size: 1.6em;
+        .milestone-title {
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            color: #2c3e50;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
-        .timeline-date {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #7f8c8d;
-            margin-bottom: 15px;
+        .milestone-description {
+            font-size: 0.9rem;
+            color: #4a5568;
+            line-height: 1.5;
+            flex-grow: 1;
         }
 
-        .timeline-description {
-            line-height: 1.6;
-            color: #34495e;
-            margin-bottom: 20px;
+        .milestone-details {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
         }
 
-        .deliverables-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .deliverable-category {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 12px;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s ease;
-        }
-
-        .deliverable-category:hover {
-            border-color: #3498db;
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
-        }
-
-        .deliverable-category h4 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.1em;
+        .detail-item {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
         }
 
-        .deliverable-category ul {
-            list-style: none;
-            padding-left: 0;
+        .detail-label {
+            font-weight: 600;
+            color: #718096;
         }
 
-        .deliverable-category li {
-            padding: 8px 0;
-            position: relative;
-            padding-left: 25px;
-            line-height: 1.4;
-            font-size: 0.95em;
+        .detail-value {
+            font-weight: 500;
+            color: #2d3748;
         }
 
-        .deliverable-category li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #27ae60;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        .technical { border-left: 4px solid #3498db; }
-        .governance { border-left: 4px solid #e74c3c; }
-        .integration { border-left: 4px solid #f39c12; }
-        .documentation { border-left: 4px solid #9b59b6; }
-
-        .adoption-cycle {
+        .adoption-badge {
             background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-            border: 2px solid #e17055;
-        }
-
-        .adoption-cycle h4 {
             color: #d63031;
-            margin-bottom: 15px;
-            font-size: 1.2em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: inline-block;
         }
 
-        .adoption-details {
+        @media (max-width: 1200px) {
+            .timeline-items {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .timeline-line {
+                display: none;
+            }
+
+            .timeline-item {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .milestone-card {
+                max-width: 100%;
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline-container {
+                padding: 2rem 1rem;
+            }
+
+            .language-selector {
+                position: static;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .summary-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #f7fafc;
+            border-radius: 15px;
+            border-left: 5px solid #4299e1;
+        }
+
+        .summary-section h3 {
+            color: #2d3748;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .summary-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
-        .adoption-detail {
-            background: rgba(255, 255, 255, 0.3);
-            padding: 10px;
-            border-radius: 8px;
+        .summary-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .adoption-detail strong {
-            color: #d63031;
+        .summary-item h4 {
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        .international-events {
-            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
+        .summary-item p {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
 
-        .international-events h4 {
-            margin-bottom: 15px;
-            font-size: 1.2em;
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
         }
 
-        .event-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: modalSlideIn 0.3s ease;
         }
 
-        .event-item strong {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        @keyframes fadeInUp {
+        @keyframes modalSlideIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
@@ -323,216 +341,439 @@
             }
         }
 
-        .legend {
-            background: #f8f9fa;
-            padding: 30px;
+        .modal-header {
+            padding: 2rem 2rem 1rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin: 0;
+        }
+
+        .modal-subtitle {
+            font-size: 1rem;
+            color: #718096;
+            margin-top: 0.5rem;
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            color: #718096;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #2d3748;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .deliverable-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .deliverable-item {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #4299e1;
+        }
+
+        .deliverable-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .deliverable-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .deliverable-list li {
+            padding: 0.25rem 0;
+            color: #4a5568;
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .deliverable-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4299e1;
+            font-weight: bold;
+        }
+
+        .adoption-info {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid #e17055;
+        }
+
+        .adoption-info h4 {
+            color: #d63031;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .adoption-details-modal {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .adoption-detail-modal {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.75rem;
+            border-radius: 6px;
             text-align: center;
         }
 
-        .legend h3 {
-            color: #2c3e50;
-            margin-bottom: 20px;
+        .adoption-detail-modal strong {
+            display: block;
+            color: #d63031;
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
         }
 
-        .legend-items {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
+        .adoption-detail-modal span {
+            color: #2d3748;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .clickable {
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .legend-color {
+        .clickable:hover {
+            transform: scale(1.02);
+        }
+
+        .info-icon {
+            display: inline-block;
             width: 20px;
             height: 20px;
+            background: #4299e1;
+            color: white;
             border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: background 0.3s ease;
         }
 
-        @media (max-width: 1200px) {
-            .deliverables-container {
-                grid-template-columns: 1fr;
-            }
+        .info-icon:hover {
+            background: #3182ce;
         }
 
         @media (max-width: 768px) {
-            .timeline::before {
-                left: 30px;
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
             }
 
-            .timeline-content {
-                width: calc(100% - 80px);
-                margin-left: 80px !important;
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
             }
 
-            .timeline-item::before {
-                left: 30px;
-                transform: translateX(-50%);
-            }
-
-            .timeline-content::before {
-                left: -30px !important;
-                border-right-color: white !important;
-                border-left-color: transparent !important;
-            }
-
-            .header h1 {
-                font-size: 2em;
-            }
-
-            .timeline {
-                padding: 60px 20px;
-            }
-
-            .adoption-details {
+            .deliverable-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .language-selector {
-                position: static;
-                margin-bottom: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="timeline-container">
         <div class="header">
             <div class="language-selector">
                 <button class="language-toggle active" onclick="setLanguage('pt')">🇧🇷 PT</button>
                 <button class="language-toggle" onclick="setLanguage('en')">🇺🇸 EN</button>
             </div>
-            <h1 data-pt="Programa DaaS Brasil" data-en="DaaS Brasil Program">Programa DaaS Brasil</h1>
-            <p data-pt="Crédito Rural com Credenciais Verificáveis — Infraestrutura Pública Digital 2025" data-en="Rural Credit with Verifiable Credentials — Digital Public Infrastructure 2025">Crédito Rural com Credenciais Verificáveis — Infraestrutura Pública Digital 2025</p>
+            <h1>TIMELINE</h1>
+            <p class="subtitle" data-pt="Programa DaaS Brasil - Infraestrutura Pública Digital 2025" data-en="DaaS Brasil Program - Digital Public Infrastructure 2025">Programa DaaS Brasil - Infraestrutura Pública Digital 2025</p>
         </div>
 
         <div class="timeline">
-            <div class="timeline-item release-0">
-                <div class="timeline-content">
-                    <h3 class="timeline-title" data-pt="🏁 Release 0 - Fundação" data-en="🏁 Release 0 - Foundation">🏁 Release 0 - Fundação</h3>
-                    <p class="timeline-date" data-pt="10 a 31 de maio de 2025" data-en="May 10-31, 2025">10 a 31 de maio de 2025</p>
-                    <p class="timeline-description" data-pt="Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional. Estabelece as bases técnicas e estratégicas para toda a implementação." data-en="Single three-week sprint brings together the entire program team with exclusively foundational focus. Establishes technical and strategic foundations for the entire implementation.">Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional. Estabelece as bases técnicas e estratégicas para toda a implementação.</p>
-                    
-                    <div class="deliverables-container">
-                        <div class="deliverable-category technical">
-                            <h4><span>🔧</span><span data-pt="Produto & Arquitetura" data-en="Product & Architecture">Produto & Arquitetura</span></h4>
-                            <ul>
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-items">
+                <div class="timeline-item">
+                    <div class="timeline-icon phase-0">🏁</div>
+                    <div class="timeline-period phase-0" data-pt="Mai 2025" data-en="May 2025">Mai 2025</div>
+                    <div class="milestone-card phase-0 clickable" onclick="openModal('modal-0')">
+                        <div>
+                            <h3 class="milestone-title" data-pt="Release 0 - Fundação" data-en="Release 0 - Foundation">Release 0 - Fundação<span class="info-icon">i</span></h3>
+                            <p class="milestone-description" data-pt="Sprint único de três semanas estabelece as bases técnicas e estratégicas. Visão de produto, MVP, personas rurais e backlog épico no Taiga." data-en="Single three-week sprint establishes technical and strategic foundations. Product vision, MVP, rural personas and epic backlog in Taiga.">Sprint único de três semanas estabelece as bases técnicas e estratégicas. Visão de produto, MVP, personas rurais e backlog épico no Taiga.</p>
+                        </div>
+                        <div class="milestone-details">
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Período:" data-en="Period:">Período:</span>
+                                <span class="detail-value" data-pt="10-31 Mai" data-en="May 10-31">10-31 Mai</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Foco:" data-en="Focus:">Foco:</span>
+                                <span class="detail-value" data-pt="Fundacional" data-en="Foundational">Fundacional</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon phase-1">🚀</div>
+                    <div class="timeline-period phase-1" data-pt="Jun-Jul 2025" data-en="Jun-Jul 2025">Jun-Jul 2025</div>
+                    <div class="milestone-card phase-1 clickable" onclick="openModal('modal-1')">
+                        <div>
+                            <h3 class="milestone-title" data-pt="Release 1 - Produção DF" data-en="Release 1 - DF Production">Release 1 - Produção DF<span class="info-icon">i</span></h3>
+                            <p class="milestone-description" data-pt="Plataforma de VCs em produção no Distrito Federal. VCs CAR e CCIR, integração com ID Gov.br e parceria com banco." data-en="VCs platform in production in Federal District. CAR and CCIR VCs, ID Gov.br integration and bank partnership.">Plataforma de VCs em produção no Distrito Federal. VCs CAR e CCIR, integração com ID Gov.br e parceria com banco.</p>
+                        </div>
+                        <div class="milestone-details">
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Período:" data-en="Period:">Período:</span>
+                                <span class="detail-value" data-pt="8 Jun - 26 Jul" data-en="Jun 8 - Jul 26">8 Jun - 26 Jul</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Local:" data-en="Location:">Local:</span>
+                                <span class="detail-value" data-pt="Distrito Federal" data-en="Federal District">Distrito Federal</span>
+                            </div>
+                            <span class="adoption-badge" data-pt="🎯 Ciclo de Adoção 1" data-en="🎯 Adoption Cycle 1">🎯 Ciclo de Adoção 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon phase-2">🌾</div>
+                    <div class="timeline-period phase-2" data-pt="Ago-Set 2025" data-en="Aug-Sep 2025">Ago-Set 2025</div>
+                    <div class="milestone-card phase-2 clickable" onclick="openModal('modal-2')">
+                        <div>
+                            <h3 class="milestone-title" data-pt="Release 2 - Expansão RS" data-en="Release 2 - RS Expansion">Release 2 - Expansão RS<span class="info-icon">i</span></h3>
+                            <p class="milestone-description" data-pt="Carteira v2 e expansão para Rio Grande do Sul. Integração completa dos registros da terra e validação de protótipos críticos." data-en="Wallet v2 and expansion to Rio Grande do Sul. Complete land registry integration and critical prototype validation.">Carteira v2 e expansão para Rio Grande do Sul. Integração completa dos registros da terra e validação de protótipos críticos.</p>
+                        </div>
+                        <div class="milestone-details">
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Período:" data-en="Period:">Período:</span>
+                                <span class="detail-value" data-pt="3 Ago - 20 Set" data-en="Aug 3 - Sep 20">3 Ago - 20 Set</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Local:" data-en="Location:">Local:</span>
+                                <span class="detail-value" data-pt="Rio Grande do Sul" data-en="Rio Grande do Sul">Rio Grande do Sul</span>
+                            </div>
+                            <span class="adoption-badge" data-pt="🎯 Ciclo de Adoção 2" data-en="🎯 Adoption Cycle 2">🎯 Ciclo de Adoção 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon phase-3">🌍</div>
+                    <div class="timeline-period phase-3" data-pt="Set-Nov 2025" data-en="Sep-Nov 2025">Set-Nov 2025</div>
+                    <div class="milestone-card phase-3 clickable" onclick="openModal('modal-3')">
+                        <div>
+                            <h3 class="milestone-title" data-pt="Release 3 - Escala Nacional" data-en="Release 3 - National Scale">Release 3 - Escala Nacional<span class="info-icon">i</span></h3>
+                            <p class="milestone-description" data-pt="Implementação nacional com integrações ICP-Brasil e MIR. Carteira v3, Seguro-Defeso e transferência para DPI Office." data-en="National implementation with ICP-Brasil and MIR integrations. Wallet v3, Closed Season Insurance and transfer to DPI Office.">Implementação nacional com integrações ICP-Brasil e MIR. Carteira v3, Seguro-Defeso e transferência para DPI Office.</p>
+                        </div>
+                        <div class="milestone-details">
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Período:" data-en="Period:">Período:</span>
+                                <span class="detail-value" data-pt="28 Set - 22 Nov" data-en="Sep 28 - Nov 22">28 Set - 22 Nov</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Escopo:" data-en="Scope:">Escopo:</span>
+                                <span class="detail-value" data-pt="Nacional" data-en="National">Nacional</span>
+                            </div>
+                            <span class="adoption-badge" data-pt="🎯 Ciclo de Adoção 3" data-en="🎯 Adoption Cycle 3">🎯 Ciclo de Adoção 3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon phase-4">🌐</div>
+                    <div class="timeline-period phase-4" data-pt="Nov 2025" data-en="Nov 2025">Nov 2025</div>
+                    <div class="milestone-card phase-4 clickable" onclick="openModal('modal-4')">
+                        <div>
+                            <h3 class="milestone-title" data-pt="COP 30 - Encerramento" data-en="COP 30 - Program Closure">COP 30 - Encerramento<span class="info-icon">i</span></h3>
+                            <p class="milestone-description" data-pt="Conclusão oficial do programa na COP 30 em Belém. Apresentação do Relatório de Impacto 1.0, métricas finais e transferência completa para operação contínua." data-en="Official program completion at COP 30 in Belém. Presentation of Impact Report 1.0, final metrics and complete transfer to continuous operation.">Conclusão oficial do programa na COP 30 em Belém. Apresentação do Relatório de Impacto 1.0, métricas finais e transferência completa para operação contínua.</p>
+                        </div>
+                        <div class="milestone-details">
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="COP 30:" data-en="COP 30:">COP 30:</span>
+                                <span class="detail-value" data-pt="10-21 Nov" data-en="Nov 10-21">10-21 Nov</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Status:" data-en="Status:">Status:</span>
+                                <span class="detail-value" data-pt="Concluído" data-en="Completed">Concluído</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label" data-pt="Local:" data-en="Location:">Local:</span>
+                                <span class="detail-value" data-pt="Belém" data-en="Belém">Belém</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <h3 data-pt="Resumo do Programa" data-en="Program Summary">Resumo do Programa</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h4 data-pt="Objetivo Principal" data-en="Main Objective">Objetivo Principal</h4>
+                    <p data-pt="Implementar uma Infraestrutura Pública Digital de Credenciais Verificáveis para tornar o crédito rural mais rápido, seguro e confiável." data-en="Implement a Digital Public Infrastructure for Verifiable Credentials to make rural credit faster, safer and more reliable.">Implementar uma Infraestrutura Pública Digital de Credenciais Verificáveis para tornar o crédito rural mais rápido, seguro e confiável.</p>
+                </div>
+                <div class="summary-item">
+                    <h4 data-pt="Duração Total" data-en="Total Duration">Duração Total</h4>
+                    <p data-pt="6 meses (maio a novembro de 2025) com metodologia Scrum em sprints paralelos organizados por pods especializados." data-en="6 months (May to November 2025) with Scrum methodology in parallel sprints organized by specialized pods.">6 meses (maio a novembro de 2025) com metodologia Scrum em sprints paralelos organizados por pods especializados.</p>
+                </div>
+                <div class="summary-item">
+                    <h4 data-pt="Cobertura Geográfica" data-en="Geographic Coverage">Cobertura Geográfica</h4>
+                    <p data-pt="Implementação progressiva: Distrito Federal → Rio Grande do Sul → Escala Nacional com encerramento na COP 30 em Belém." data-en="Progressive implementation: Federal District → Rio Grande do Sul → National Scale with closure at COP 30 in Belém.">Implementação progressiva: Distrito Federal → Rio Grande do Sul → Escala Nacional com encerramento na COP 30 em Belém.</p>
+                </div>
+                <div class="summary-item">
+                    <h4 data-pt="Conclusão Estratégica" data-en="Strategic Conclusion">Conclusão Estratégica</h4>
+                    <p data-pt="Programa encerra simbolicamente na COP 30, posicionando o Brasil como líder global em infraestrutura digital pública para sustentabilidade." data-en="Program concludes symbolically at COP 30, positioning Brazil as a global leader in digital public infrastructure for sustainability.">Programa encerra simbolicamente na COP 30, posicionando o Brasil como líder global em infraestrutura digital pública para sustentabilidade.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Modal 0 - Release 0 -->
+    <div id="modal-0" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('modal-0')">&times;</span>
+                <h2 class="modal-title" data-pt="🏁 Release 0 - Fundação" data-en="🏁 Release 0 - Foundation">🏁 Release 0 - Fundação</h2>
+                <p class="modal-subtitle" data-pt="10 a 31 de maio de 2025" data-en="May 10-31, 2025">10 a 31 de maio de 2025</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>📋 <span data-pt="Visão Geral" data-en="Overview">Visão Geral</span></h3>
+                    <p data-pt="Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional. Estabelece as bases técnicas e estratégicas para toda a implementação." data-en="Single three-week sprint brings together the entire program team with exclusively foundational focus. Establishes technical and strategic foundations for the entire implementation.">Sprint único de três semanas reúne todo o time do programa com foco exclusivamente fundacional. Estabelece as bases técnicas e estratégicas para toda a implementação.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>🎯 <span data-pt="Principais Deliverables" data-en="Key Deliverables">Principais Deliverables</span></h3>
+                    <div class="deliverable-grid">
+                        <div class="deliverable-item">
+                            <h4>🔧 <span data-pt="Produto & Arquitetura" data-en="Product & Architecture">Produto & Arquitetura</span></h4>
+                            <ul class="deliverable-list">
                                 <li data-pt="Visão de produto completa documentada" data-en="Complete product vision documented">Visão de produto completa documentada</li>
                                 <li data-pt="MVP (Minimum Viable Product) definido" data-en="MVP (Minimum Viable Product) defined">MVP (Minimum Viable Product) definido</li>
-                                <li data-pt="Arquitetura técnica base da IPD-VC" data-en="Technical base architecture of VC-DPI">Arquitetura técnica base da IPD-VC</li>
-                                <li data-pt="Requisitos de segurança e compliance" data-en="Security and compliance requirements">Requisitos de segurança e compliance</li>
+                                <li data-pt="Arquitetura técnica base da IPD de VCs" data-en="Technical base architecture of VC DPI">Arquitetura técnica base da IPD de VCs</li>
                                 <li data-pt="Padrões de interoperabilidade definidos" data-en="Interoperability standards defined">Padrões de interoperabilidade definidos</li>
                             </ul>
                         </div>
-                        
-                        <div class="deliverable-category governance">
-                            <h4><span>👥</span><span data-pt="Governança & Pessoas" data-en="Governance & People">Governança & Pessoas</span></h4>
-                            <ul>
+                        <div class="deliverable-item">
+                            <h4>👥 <span data-pt="Governança & Pessoas" data-en="Governance & People">Governança & Pessoas</span></h4>
+                            <ul class="deliverable-list">
                                 <li data-pt="Estrutura do Núcleo de Gestão estabelecida" data-en="Management Core structure established">Estrutura do Núcleo de Gestão estabelecida</li>
                                 <li data-pt="Pods Scrum organizados e operacionais" data-en="Scrum Pods organized and operational">Pods Scrum organizados e operacionais</li>
                                 <li data-pt="Personas rurais mapeadas e validadas" data-en="Rural personas mapped and validated">Personas rurais mapeadas e validadas</li>
-                                <li data-pt="Stakeholders identificados e engajados" data-en="Stakeholders identified and engaged">Stakeholders identificados e engajados</li>
                                 <li data-pt="Papéis e responsabilidades definidos" data-en="Roles and responsibilities defined">Papéis e responsabilidades definidos</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category integration">
-                            <h4><span>📊</span><span data-pt="Métricas & Baselines" data-en="Metrics & Baselines">Métricas & Baselines</span></h4>
-                            <ul>
-                                <li data-pt="Linha-base de impacto no Distrito Federal" data-en="Impact baseline in Federal District">Linha-base de impacto no Distrito Federal</li>
-                                <li data-pt="KPIs e métricas de sucesso definidos" data-en="KPIs and success metrics defined">KPIs e métricas de sucesso definidos</li>
-                                <li data-pt="Framework de monitoramento criado" data-en="Monitoring framework created">Framework de monitoramento criado</li>
-                                <li data-pt="Metodologia de avaliação de impacto" data-en="Impact assessment methodology">Metodologia de avaliação de impacto</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category documentation">
-                            <h4><span>📋</span><span data-pt="Planejamento & Ferramentas" data-en="Planning & Tools">Planejamento & Ferramentas</span></h4>
-                            <ul>
-                                <li data-pt="Backlog épico criado no Taiga" data-en="Epic backlog created in Taiga">Backlog épico criado no Taiga</li>
-                                <li data-pt="Roadmap detalhado dos releases" data-en="Detailed release roadmap">Roadmap detalhado dos releases</li>
-                                <li data-pt="Ambiente de desenvolvimento configurado" data-en="Development environment configured">Ambiente de desenvolvimento configurado</li>
-                                <li data-pt="Processos de CI/CD definidos" data-en="CI/CD processes defined">Processos de CI/CD definidos</li>
-                                <li data-pt="Estratégia de comunicação estabelecida" data-en="Communication strategy established">Estratégia de comunicação estabelecida</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="timeline-item release-1">
-                <div class="timeline-content">
-                    <h3 class="timeline-title" data-pt="🚀 Release 1 - Produção DF" data-en="🚀 Release 1 - DF Production">🚀 Release 1 - Produção DF</h3>
-                    <p class="timeline-date" data-pt="8 de junho a 26 de julho de 2025" data-en="June 8 - July 26, 2025">8 de junho a 26 de julho de 2025</p>
-                    <p class="timeline-description" data-pt="Quatro sprints paralelos colocam a plataforma de VCs em produção no Distrito Federal. Primeira implementação real com integração ao ID Gov.br e parceria estratégica com o Banco do Brasil." data-en="Four parallel sprints put the VCs platform into production in the Federal District. First real implementation with ID Gov.br integration and strategic partnership with Banco do Brasil.">Quatro sprints paralelos colocam a plataforma de VCs em produção no Distrito Federal. Primeira implementação real com integração ao ID Gov.br e parceria estratégica com o Banco do Brasil.</p>
-                    
-                    <div class="deliverables-container">
-                        <div class="deliverable-category technical">
-                            <h4><span>🔧</span><span data-pt="Plataforma & Credenciais" data-en="Platform & Credentials">Plataforma & Credenciais</span></h4>
-                            <ul>
+    <!-- Modal 1 - Release 1 -->
+    <div id="modal-1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('modal-1')">&times;</span>
+                <h2 class="modal-title" data-pt="🚀 Release 1 - Produção DF" data-en="🚀 Release 1 - DF Production">🚀 Release 1 - Produção DF</h2>
+                <p class="modal-subtitle" data-pt="8 de junho a 26 de julho de 2025" data-en="June 8 - July 26, 2025">8 de junho a 26 de julho de 2025</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>📋 <span data-pt="Visão Geral" data-en="Overview">Visão Geral</span></h3>
+                    <p data-pt="Quatro sprints paralelos colocam a plataforma de VCs em produção no Distrito Federal. Primeira implementação real com VCs CAR e CCIR, integração ao ID Gov.br e parceria estratégica com banco parceiro." data-en="Four parallel sprints put the VCs platform into production in the Federal District. First real implementation with CAR and CCIR VCs, ID Gov.br integration and strategic partnership with partner bank.">Quatro sprints paralelos colocam a plataforma de VCs em produção no Distrito Federal. Primeira implementação real com VCs CAR e CCIR, integração ao ID Gov.br e parceria estratégica com banco parceiro.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>🎯 <span data-pt="Principais Deliverables" data-en="Key Deliverables">Principais Deliverables</span></h3>
+                    <div class="deliverable-grid">
+                        <div class="deliverable-item">
+                            <h4>🔧 <span data-pt="Plataforma & Credenciais" data-en="Platform & Credentials">Plataforma & Credenciais</span></h4>
+                            <ul class="deliverable-list">
                                 <li data-pt="Plataforma de VCs em produção no DF" data-en="VCs platform in production in DF">Plataforma de VCs em produção no DF</li>
-                                <li data-pt="VCs CAR (Cadastro Ambiental Rural)" data-en="CAR VCs (Rural Environmental Registry)">VCs CAR (Cadastro Ambiental Rural)</li>
+                                <li data-pt="VCs CAR 1 (Cadastro Ambiental Rural)" data-en="CAR 1 VCs (Rural Environmental Registry)">VCs CAR 1 (Cadastro Ambiental Rural)</li>
                                 <li data-pt="VCs CCIR (Certificado de Cadastro de Imóvel Rural)" data-en="CCIR VCs (Rural Property Registration Certificate)">VCs CCIR (Certificado de Cadastro de Imóvel Rural)</li>
                                 <li data-pt="Carteira Digital v1 funcional" data-en="Digital Wallet v1 functional">Carteira Digital v1 funcional</li>
-                                <li data-pt="APIs de emissão e verificação" data-en="Issuance and verification APIs">APIs de emissão e verificação</li>
-                                <li data-pt="Sistema de backup e recuperação" data-en="Backup and recovery system">Sistema de backup e recuperação</li>
                             </ul>
                         </div>
-                        
-                        <div class="deliverable-category integration">
-                            <h4><span>🔗</span><span data-pt="Integrações Críticas" data-en="Critical Integrations">Integrações Críticas</span></h4>
-                            <ul>
+                        <div class="deliverable-item">
+                            <h4>🔗 <span data-pt="Integrações Críticas" data-en="Critical Integrations">Integrações Críticas</span></h4>
+                            <ul class="deliverable-list">
                                 <li data-pt="Integração plena ao ID Gov.br" data-en="Full integration with ID Gov.br">Integração plena ao ID Gov.br</li>
                                 <li data-pt="Autenticação de produtores rurais" data-en="Rural producers authentication">Autenticação de produtores rurais</li>
                                 <li data-pt="Conectores com bases do INCRA" data-en="Connectors with INCRA databases">Conectores com bases do INCRA</li>
                                 <li data-pt="Integração com SICAR (Sistema CAR)" data-en="Integration with SICAR (CAR System)">Integração com SICAR (Sistema CAR)</li>
-                                <li data-pt="Protocolo de troca de dados seguro" data-en="Secure data exchange protocol">Protocolo de troca de dados seguro</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category governance">
-                            <h4><span>🤝</span><span data-pt="Parcerias & Governança" data-en="Partnerships & Governance">Parcerias & Governança</span></h4>
-                            <ul>
-                                <li data-pt="ACT MGI-Banco do Brasil assinado" data-en="MGI-Banco do Brasil ACT signed">ACT MGI-Banco do Brasil assinado</li>
-                                <li data-pt="Banco do Brasil integra Steering Committee" data-en="Banco do Brasil joins Steering Committee">Banco do Brasil integra Steering Committee</li>
-                                <li data-pt="Marcos regulatórios aprovados" data-en="Regulatory frameworks approved">Marcos regulatórios aprovados</li>
-                                <li data-pt="SLAs e acordos de nível de serviço" data-en="SLAs and service level agreements">SLAs e acordos de nível de serviço</li>
-                                <li data-pt="Política de privacidade e LGPD" data-en="Privacy policy and LGPD compliance">Política de privacidade e LGPD</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category documentation">
-                            <h4><span>📚</span><span data-pt="Documentação & Suporte" data-en="Documentation & Support">Documentação & Suporte</span></h4>
-                            <ul>
-                                <li data-pt="Manual do usuário produtores rurais" data-en="Rural producers user manual">Manual do usuário produtores rurais</li>
-                                <li data-pt="Guia de implementação técnica" data-en="Technical implementation guide">Guia de implementação técnica</li>
-                                <li data-pt="Documentação de APIs" data-en="API documentation">Documentação de APIs</li>
-                                <li data-pt="Procedimentos operacionais padrão" data-en="Standard operating procedures">Procedimentos operacionais padrão</li>
-                                <li data-pt="Plano de contingência e recuperação" data-en="Contingency and recovery plan">Plano de contingência e recuperação</li>
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="adoption-cycle">
-                        <h4 data-pt="🎯 Ciclo de Adoção 1" data-en="🎯 Adoption Cycle 1">🎯 Ciclo de Adoção 1</h4>
-                        <div class="adoption-details">
-                            <div class="adoption-detail">
+                </div>
+
+                <div class="modal-section">
+                    <h3>🎯 <span data-pt="Ciclo de Adoção 1" data-en="Adoption Cycle 1">Ciclo de Adoção 1</span></h3>
+                    <div class="adoption-info">
+                        <h4 data-pt="Implementação no Distrito Federal" data-en="Federal District Implementation">Implementação no Distrito Federal</h4>
+                        <div class="adoption-details-modal">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Início:" data-en="Start:">Início:</strong>
                                 <span data-pt="27 de julho de 2025" data-en="July 27, 2025">27 de julho de 2025</span>
                             </div>
-                            <div class="adoption-detail">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Duração:" data-en="Duration:">Duração:</strong>
                                 <span data-pt="8 semanas" data-en="8 weeks">8 semanas</span>
                             </div>
-                            <div class="adoption-detail">
-                                <strong data-pt="Local:" data-en="Location:">Local:</strong>
-                                <span data-pt="Distrito Federal" data-en="Federal District">Distrito Federal</span>
-                            </div>
-                            <div class="adoption-detail">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Foco:" data-en="Focus:">Foco:</strong>
                                 <span data-pt="Uso real em produção" data-en="Real production usage">Uso real em produção</span>
                             </div>
@@ -540,76 +781,61 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="timeline-item release-2">
-                <div class="timeline-content">
-                    <h3 class="timeline-title" data-pt="🌾 Release 2 - Expansão RS" data-en="🌾 Release 2 - RS Expansion">🌾 Release 2 - Expansão RS</h3>
-                    <p class="timeline-date" data-pt="3 de agosto a 20 de setembro de 2025" data-en="August 3 - September 20, 2025">3 de agosto a 20 de setembro de 2025</p>
-                    <p class="timeline-description" data-pt="Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Validação de protótipos críticos e preparação contratual." data-en="Evolution to Wallet v2 and expansion to Rio Grande do Sul with complete land registry integration. Critical prototype validation and contractual preparation.">Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Validação de protótipos críticos e preparação contratual.</p>
-                    
-                    <div class="deliverables-container">
-                        <div class="deliverable-category technical">
-                            <h4><span>🔧</span><span data-pt="Evolução da Plataforma" data-en="Platform Evolution">Evolução da Plataforma</span></h4>
-                            <ul>
+    <!-- Modal 2 - Release 2 -->
+    <div id="modal-2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('modal-2')">&times;</span>
+                <h2 class="modal-title" data-pt="🌾 Release 2 - Expansão RS" data-en="🌾 Release 2 - RS Expansion">🌾 Release 2 - Expansão RS</h2>
+                <p class="modal-subtitle" data-pt="3 de agosto a 20 de setembro de 2025" data-en="August 3 - September 20, 2025">3 de agosto a 20 de setembro de 2025</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>📋 <span data-pt="Visão Geral" data-en="Overview">Visão Geral</span></h3>
+                    <p data-pt="Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Introdução da segunda VC CAR (Recibo), VCs CAF (agricultura familiar) e validação de protótipos críticos. Devem ser entregues as funcionalidades bancárias mínimas para suporte às VCs." data-en="Evolution to Wallet v2 and expansion to Rio Grande do Sul with complete land registry integration. Introduction of second CAR VC (Receipt), CAF VCs (family farming) and critical prototype validation. Minimum banking functionalities for VCs support must be delivered.">Evolução para Carteira v2 e expansão para Rio Grande do Sul com integração completa dos registros da terra. Introdução da segunda VC CAR (Recibo), VCs CAF (agricultura familiar) e validação de protótipos críticos. Devem ser entregues as funcionalidades bancárias mínimas para suporte às VCs.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>🎯 <span data-pt="Principais Deliverables" data-en="Key Deliverables">Principais Deliverables</span></h3>
+                    <div class="deliverable-grid">
+                        <div class="deliverable-item">
+                            <h4>🔧 <span data-pt="Evolução da Plataforma" data-en="Platform Evolution">Evolução da Plataforma</span></h4>
+                            <ul class="deliverable-list">
                                 <li data-pt="Carteira Digital v2 com novos recursos" data-en="Digital Wallet v2 with new features">Carteira Digital v2 com novos recursos</li>
-                                <li data-pt="VCs CA (Certificado de Avaliação)" data-en="CA VCs (Assessment Certificate)">VCs CA (Certificado de Avaliação)</li>
-                                <li data-pt="VCs Recibo CAR automatizados" data-en="Automated CAR Receipt VCs">VCs Recibo CAR automatizados</li>
+                                <li data-pt="VCs CAF (agricultura familiar)" data-en="CAF VCs (family farming)">VCs CAF (agricultura familiar)</li>
+                                <li data-pt="VCs CAR 2 (Recibo CAR)" data-en="CAR 2 VCs (CAR Receipt)">VCs CAR 2 (Recibo CAR)</li>
                                 <li data-pt="Sistema de notificações inteligentes" data-en="Smart notification system">Sistema de notificações inteligentes</li>
-                                <li data-pt="Dashboard de monitoramento em tempo real" data-en="Real-time monitoring dashboard">Dashboard de monitoramento em tempo real</li>
-                                <li data-pt="Otimizações de performance" data-en="Performance optimizations">Otimizações de performance</li>
                             </ul>
                         </div>
-                        
-                        <div class="deliverable-category integration">
-                            <h4><span>🔗</span><span data-pt="Integração Registros da Terra" data-en="Land Registry Integration">Integração Registros da Terra</span></h4>
-                            <ul>
-                                <li data-pt="Consolidação dados CAR, CCIR, CA" data-en="Consolidation of CAR, CCIR, CA data">Consolidação dados CAR, CCIR, CA</li>
-                                <li data-pt="Integração completa bases INCRA" data-en="Complete INCRA database integration">Integração completa bases INCRA</li>
-                                <li data-pt="Sincronização em tempo real" data-en="Real-time synchronization">Sincronização em tempo real</li>
-                                <li data-pt="Validação cruzada de dados" data-en="Cross-data validation">Validação cruzada de dados</li>
-                                <li data-pt="Histórico de transações completo" data-en="Complete transaction history">Histórico de transações completo</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category governance">
-                            <h4><span>📋</span><span data-pt="Protótipos & Validações" data-en="Prototypes & Validations">Protótipos & Validações</span></h4>
-                            <ul>
-                                <li data-pt="Protótipo ICP-Brasil validado/vetado" data-en="ICP-Brasil prototype validated/vetoed">Protótipo ICP-Brasil validado/vetado</li>
-                                <li data-pt="Protótipo MIR validado pelo DPI Office" data-en="MIR prototype validated by DPI Office">Protótipo MIR validado pelo DPI Office</li>
-                                <li data-pt="Primeira minuta contrato MGI-Dataprev" data-en="First draft MGI-Dataprev contract">Primeira minuta contrato MGI-Dataprev</li>
-                                <li data-pt="Revisão arquitetural estratégica" data-en="Strategic architectural review">Revisão arquitetural estratégica</li>
-                                <li data-pt="Avaliação de segurança independente" data-en="Independent security assessment">Avaliação de segurança independente</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category documentation">
-                            <h4><span>📊</span><span data-pt="Expansão & Métricas" data-en="Expansion & Metrics">Expansão & Métricas</span></h4>
-                            <ul>
-                                <li data-pt="Plano de expansão para RS" data-en="Expansion plan for RS">Plano de expansão para RS</li>
-                                <li data-pt="Métricas de adoção DF analisadas" data-en="DF adoption metrics analyzed">Métricas de adoção DF analisadas</li>
-                                <li data-pt="Relatório de lições aprendidas" data-en="Lessons learned report">Relatório de lições aprendidas</li>
-                                <li data-pt="Ajustes baseados em feedback" data-en="Feedback-based adjustments">Ajustes baseados em feedback</li>
-                                <li data-pt="Plano de comunicação RS" data-en="RS communication plan">Plano de comunicação RS</li>
+                        <div class="deliverable-item">
+                            <h4>🏦 <span data-pt="Funcionalidades Bancárias Mínimas" data-en="Minimum Banking Functionalities">Funcionalidades Bancárias Mínimas</span></h4>
+                            <ul class="deliverable-list">
+                                <li data-pt="APIs básicas de verificação de VCs" data-en="Basic VCs verification APIs">APIs básicas de verificação de VCs</li>
+                                <li data-pt="Integração inicial sistemas crédito rural" data-en="Initial rural credit systems integration">Integração inicial sistemas crédito rural</li>
+                                <li data-pt="Validação automática de credenciais" data-en="Automatic credential validation">Validação automática de credenciais</li>
+                                <li data-pt="Interface piloto para operadores bancários" data-en="Pilot interface for banking operators">Interface piloto para operadores bancários</li>
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="adoption-cycle">
-                        <h4 data-pt="🎯 Ciclo de Adoção 2" data-en="🎯 Adoption Cycle 2">🎯 Ciclo de Adoção 2</h4>
-                        <div class="adoption-details">
-                            <div class="adoption-detail">
+                </div>
+
+                <div class="modal-section">
+                    <h3>🎯 <span data-pt="Ciclo de Adoção 2" data-en="Adoption Cycle 2">Ciclo de Adoção 2</span></h3>
+                    <div class="adoption-info">
+                        <h4 data-pt="Expansão para Rio Grande do Sul" data-en="Expansion to Rio Grande do Sul">Expansão para Rio Grande do Sul</h4>
+                        <div class="adoption-details-modal">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Início:" data-en="Start:">Início:</strong>
                                 <span data-pt="21 de setembro de 2025" data-en="September 21, 2025">21 de setembro de 2025</span>
                             </div>
-                            <div class="adoption-detail">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Término:" data-en="End:">Término:</strong>
                                 <span data-pt="15 de novembro de 2025" data-en="November 15, 2025">15 de novembro de 2025</span>
                             </div>
-                            <div class="adoption-detail">
-                                <strong data-pt="Local:" data-en="Location:">Local:</strong>
-                                <span data-pt="Rio Grande do Sul" data-en="Rio Grande do Sul">Rio Grande do Sul</span>
-                            </div>
-                            <div class="adoption-detail">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Resultado:" data-en="Result:">Resultado:</strong>
                                 <span data-pt="Relatório 0.3" data-en="Report 0.3">Relatório 0.3</span>
                             </div>
@@ -617,76 +843,61 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="timeline-item release-3">
-                <div class="timeline-content">
-                    <h3 class="timeline-title" data-pt="🌍 Release 3 - Escala Nacional" data-en="🌍 Release 3 - National Scale">🌍 Release 3 - Escala Nacional</h3>
-                    <p class="timeline-date" data-pt="28 de setembro a 22 de novembro de 2025" data-en="September 28 - November 22, 2025">28 de setembro a 22 de novembro de 2025</p>
-                    <p class="timeline-description" data-pt="Implementação final em escala nacional com todas as integrações em produção. Transferência progressiva de responsabilidades para o DPI Office e consolidação do ecossistema." data-en="Final implementation at national scale with all integrations in production. Progressive transfer of responsibilities to DPI Office and ecosystem consolidation.">Implementação final em escala nacional com todas as integrações em produção. Transferência progressiva de responsabilidades para o DPI Office e consolidação do ecossistema.</p>
-                    
-                    <div class="deliverables-container">
-                        <div class="deliverable-category technical">
-                            <h4><span>🔧</span><span data-pt="Plataforma Final" data-en="Final Platform">Plataforma Final</span></h4>
-                            <ul>
+    <!-- Modal 3 - Release 3 -->
+    <div id="modal-3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('modal-3')">&times;</span>
+                <h2 class="modal-title" data-pt="🌍 Release 3 - Escala Nacional" data-en="🌍 Release 3 - National Scale">🌍 Release 3 - Escala Nacional</h2>
+                <p class="modal-subtitle" data-pt="28 de setembro a 22 de novembro de 2025" data-en="September 28 - November 22, 2025">28 de setembro a 22 de novembro de 2025</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>📋 <span data-pt="Visão Geral" data-en="Overview">Visão Geral</span></h3>
+                    <p data-pt="Nos quatro sprints finais as integrações ICP-Brasil e MIR entram em produção; a Carteira v3 lança a carteira virtual dentro do app MIR, inclui o Seguro-Defeso e outros documentos rurais. O instrumento de formalização MGI-Dataprev é assinado. A integração com registros públicos essenciais por meio de credenciais verificáveis agora funciona em escala nacional." data-en="In the final four sprints ICP-Brasil and MIR integrations go into production; Wallet v3 launches the virtual wallet within the MIR app, includes Closed Season Insurance and other rural documents. The MGI-Dataprev formalization instrument is signed. Integration with essential public records through verifiable credentials now works at national scale.">Nos quatro sprints finais as integrações ICP-Brasil e MIR entram em produção; a Carteira v3 lança a carteira virtual dentro do app MIR, inclui o Seguro-Defeso e outros documentos rurais. O instrumento de formalização MGI-Dataprev é assinado. A integração com registros públicos essenciais por meio de credenciais verificáveis agora funciona em escala nacional.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>🎯 <span data-pt="Principais Deliverables" data-en="Key Deliverables">Principais Deliverables</span></h3>
+                    <div class="deliverable-grid">
+                        <div class="deliverable-item">
+                            <h4>🔧 <span data-pt="Plataforma Final" data-en="Final Platform">Plataforma Final</span></h4>
+                            <ul class="deliverable-list">
                                 <li data-pt="Carteira Digital v3 completa" data-en="Complete Digital Wallet v3">Carteira Digital v3 completa</li>
                                 <li data-pt="Integrações ICP-Brasil em produção" data-en="ICP-Brasil integrations in production">Integrações ICP-Brasil em produção</li>
-                                <li data-pt="Integração MIR em produção" data-en="MIR integration in production">Integração MIR em produção</li>
                                 <li data-pt="Carteira virtual dentro do app MIR" data-en="Virtual wallet within MIR app">Carteira virtual dentro do app MIR</li>
                                 <li data-pt="VCs Seguro-Defeso implementados" data-en="Closed Season Insurance VCs implemented">VCs Seguro-Defeso implementados</li>
-                                <li data-pt="Outros documentos rurais digitalizados" data-en="Other digitized rural documents">Outros documentos rurais digitalizados</li>
                             </ul>
                         </div>
-                        
-                        <div class="deliverable-category integration">
-                            <h4><span>🌐</span><span data-pt="Operação Nacional" data-en="National Operation">Operação Nacional</span></h4>
-                            <ul>
-                                <li data-pt="VCs funcionando em escala nacional" data-en="VCs operating at national scale">VCs funcionando em escala nacional</li>
-                                <li data-pt="Todos os registros da terra integrados" data-en="All land registries integrated">Todos os registros da terra integrados</li>
-                                <li data-pt="Sistema de alta disponibilidade" data-en="High availability system">Sistema de alta disponibilidade</li>
-                                <li data-pt="Balanceamento de carga nacional" data-en="National load balancing">Balanceamento de carga nacional</li>
-                                <li data-pt="Monitoramento 24/7 operacional" data-en="24/7 operational monitoring">Monitoramento 24/7 operacional</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category governance">
-                            <h4><span>📋</span><span data-pt="Transição & Contratos" data-en="Transition & Contracts">Transição & Contratos</span></h4>
-                            <ul>
-                                <li data-pt="Contrato MGI-Dataprev assinado" data-en="MGI-Dataprev contract signed">Contrato MGI-Dataprev assinado</li>
-                                <li data-pt="DPI Office preparação como Product Owner" data-en="DPI Office preparation as Product Owner">DPI Office preparação como Product Owner</li>
-                                <li data-pt="Transferência gradual de responsabilidades" data-en="Gradual transfer of responsibilities">Transferência gradual de responsabilidades</li>
-                                <li data-pt="Estrutura operacional definida" data-en="Operational structure defined">Estrutura operacional definida</li>
-                                <li data-pt="Planos de continuidade aprovados" data-en="Continuity plans approved">Planos de continuidade aprovados</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category documentation">
-                            <h4><span>📈</span><span data-pt="Estratégia & Expansão" data-en="Strategy & Expansion">Estratégia & Expansão</span></h4>
-                            <ul>
-                                <li data-pt="Estratégia de Expansão do Ecossistema" data-en="Ecosystem Expansion Strategy">Estratégia de Expansão do Ecossistema</li>
-                                <li data-pt="Roadmap Nacional de VCs aprovado" data-en="National VCs Roadmap approved">Roadmap Nacional de VCs aprovado</li>
-                                <li data-pt="Framework de novos verticais" data-en="New verticals framework">Framework de novos verticais</li>
-                                <li data-pt="Guia de implementação para estados" data-en="Implementation guide for states">Guia de implementação para estados</li>
-                                <li data-pt="Padrões de certificação estabelecidos" data-en="Certification standards established">Padrões de certificação estabelecidos</li>
+                        <div class="deliverable-item">
+                            <h4>🏦 <span data-pt="Adaptações Banco Parceiro" data-en="Partner Bank Adaptations">Adaptações Banco Parceiro</span></h4>
+                            <ul class="deliverable-list">
+                                <li data-pt="Sistemas de análise de crédito adaptados para VCs" data-en="Credit analysis systems adapted for VCs">Sistemas de análise de crédito adaptados para VCs</li>
+                                <li data-pt="Fluxos de trabalho bancários otimizados" data-en="Optimized banking workflows">Fluxos de trabalho bancários otimizados</li>
+                                <li data-pt="Treinamento de equipes bancárias" data-en="Banking teams training">Treinamento de equipes bancárias</li>
+                                <li data-pt="SLAs banco parceiro para VCs definidos" data-en="Partner bank SLAs for VCs defined">SLAs banco parceiro para VCs definidos</li>
                             </ul>
                         </div>
                     </div>
-                    
-                    <div class="adoption-cycle">
-                        <h4 data-pt="🎯 Ciclo de Adoção 3" data-en="🎯 Adoption Cycle 3">🎯 Ciclo de Adoção 3</h4>
-                        <div class="adoption-details">
-                            <div class="adoption-detail">
+                </div>
+
+                <div class="modal-section">
+                    <h3>🎯 <span data-pt="Ciclo de Adoção 3" data-en="Adoption Cycle 3">Ciclo de Adoção 3</span></h3>
+                    <div class="adoption-info">
+                        <h4 data-pt="Operação Nacional" data-en="National Operation">Operação Nacional</h4>
+                        <div class="adoption-details-modal">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Início:" data-en="Start:">Início:</strong>
                                 <span data-pt="23 de novembro de 2025" data-en="November 23, 2025">23 de novembro de 2025</span>
                             </div>
-                            <div class="adoption-detail">
-                                <strong data-pt="Término:" data-en="End:">Término:</strong>
-                                <span data-pt="Dezembro de 2025" data-en="December 2025">Dezembro de 2025</span>
-                            </div>
-                            <div class="adoption-detail">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Escopo:" data-en="Scope:">Escopo:</strong>
                                 <span data-pt="Nacional (RS + piloto Belém)" data-en="National (RS + Belém pilot)">Nacional (RS + piloto Belém)</span>
                             </div>
-                            <div class="adoption-detail">
+                            <div class="adoption-detail-modal">
                                 <strong data-pt="Resultado:" data-en="Result:">Resultado:</strong>
                                 <span data-pt="Relatório de Impacto 1.0" data-en="Impact Report 1.0">Relatório de Impacto 1.0</span>
                             </div>
@@ -694,112 +905,64 @@
                     </div>
                 </div>
             </div>
-
-            <div class="timeline-item events">
-                <div class="timeline-content">
-                    <h3 class="timeline-title" data-pt="🌐 Eventos Internacionais" data-en="🌐 International Events">🌐 Eventos Internacionais</h3>
-                    <p class="timeline-date" data-pt="Novembro de 2025" data-en="November 2025">Novembro de 2025</p>
-                    <p class="timeline-description" data-pt="Participação estratégica em eventos internacionais para apresentação dos resultados, networking e posicionamento do Brasil como referência em infraestrutura digital." data-en="Strategic participation in international events for results presentation, networking, and positioning Brazil as a reference in digital infrastructure.">Participação estratégica em eventos internacionais para apresentação dos resultados, networking e posicionamento do Brasil como referência em infraestrutura digital.</p>
-                    
-                    <div class="international-events">
-                        <h4 data-pt="🗓️ Agenda Internacional" data-en="🗓️ International Agenda">🗓️ Agenda Internacional</h4>
-                        
-                        <div class="event-item">
-                            <strong data-pt="🇿🇦 Global DPI Summit - Cidade do Cabo" data-en="🇿🇦 Global DPI Summit - Cape Town">🇿🇦 Global DPI Summit - Cidade do Cabo</strong>
-                            <span data-pt="4-6 de novembro • Apresentação dos resultados do programa para líderes mundiais em DPI" data-en="November 4-6 • Program results presentation to global DPI leaders">4-6 de novembro • Apresentação dos resultados do programa para líderes mundiais em DPI</span>
-                        </div>
-                        
-                        <div class="event-item">
-                            <strong data-pt="🇮🇳 Treinamentos MOSIP/INJI - Bengaluru" data-en="🇮🇳 MOSIP/INJI Training - Bengaluru">🇮🇳 Treinamentos MOSIP/INJI - Bengaluru</strong>
-                            <span data-pt="7-11 de novembro • Laboratório técnico no IIIT Bangalore e workshops na EkStep Foundation" data-en="November 7-11 • Technical lab at IIIT Bangalore and workshops at EkStep Foundation">7-11 de novembro • Laboratório técnico no IIIT Bangalore e workshops na EkStep Foundation</span>
-                        </div>
-                        
-                        <div class="event-item">
-                            <strong data-pt="🇧🇷 COP 30 - Belém" data-en="🇧🇷 COP 30 - Belém">🇧🇷 COP 30 - Belém</strong>
-                            <span data-pt="10-21 de novembro • Apresentação de métricas, contrato MGI-Dataprev e Estratégia de Expansão" data-en="November 10-21 • Presentation of metrics, MGI-Dataprev contract and Expansion Strategy">10-21 de novembro • Apresentação de métricas, contrato MGI-Dataprev e Estratégia de Expansão</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item closure">
-                <div class="timeline-content">
-                    <h3 class="timeline-title" data-pt="🏆 Encerramento" data-en="🏆 Closure">🏆 Encerramento</h3>
-                    <p class="timeline-date" data-pt="Dezembro de 2025" data-en="December 2025">Dezembro de 2025</p>
-                    <p class="timeline-description" data-pt="Conclusão oficial do programa com homologação do Relatório de Impacto 1.0 e transferência completa das responsabilidades para operação contínua." data-en="Official program completion with Impact Report 1.0 homologation and complete transfer of responsibilities for continuous operation.">Conclusão oficial do programa com homologação do Relatório de Impacto 1.0 e transferência completa das responsabilidades para operação contínua.</p>
-                    
-                    <div class="deliverables-container">
-                        <div class="deliverable-category technical">
-                            <h4><span>📊</span><span data-pt="Relatório Final" data-en="Final Report">Relatório Final</span></h4>
-                            <ul>
-                                <li data-pt="Relatório de Impacto 1.0 homologado" data-en="Impact Report 1.0 approved">Relatório de Impacto 1.0 homologado</li>
-                                <li data-pt="Métricas de sucesso documentadas" data-en="Success metrics documented">Métricas de sucesso documentadas</li>
-                                <li data-pt="KPIs de adoção nacional consolidados" data-en="National adoption KPIs consolidated">KPIs de adoção nacional consolidados</li>
-                                <li data-pt="Análise de impacto econômico" data-en="Economic impact analysis">Análise de impacto econômico</li>
-                                <li data-pt="Lições aprendidas compiladas" data-en="Lessons learned compiled">Lições aprendidas compiladas</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category governance">
-                            <h4><span>🔄</span><span data-pt="Transição Operacional" data-en="Operational Transition">Transição Operacional</span></h4>
-                            <ul>
-                                <li data-pt="Programa declarado oficialmente concluído" data-en="Program officially declared completed">Programa declarado oficialmente concluído</li>
-                                <li data-pt="Steering Committee formalmente desativado" data-en="Steering Committee formally deactivated">Steering Committee formalmente desativado</li>
-                                <li data-pt="DPI Office assume backlog completo" data-en="DPI Office assumes complete backlog">DPI Office assume backlog completo</li>
-                                <li data-pt="Equipe de transição estabelecida" data-en="Transition team established">Equipe de transição estabelecida</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category integration">
-                            <h4><span>🏛️</span><span data-pt="Operação Contínua" data-en="Continuous Operation">Operação Contínua</span></h4>
-                            <ul>
-                                <li data-pt="IPD operando sob contrato MGI-Dataprev" data-en="DPI operating under MGI-Dataprev contract">IPD operando sob contrato MGI-Dataprev</li>
-                                <li data-pt="Ciclos Scrum contínuos iniciados" data-en="Continuous Scrum cycles initiated">Ciclos Scrum contínuos iniciados</li>
-                                <li data-pt="Processo de reavaliação estabelecido" data-en="Re-evaluation process established">Processo de reavaliação estabelecido</li>
-                                <li data-pt="Governança de longo prazo ativa" data-en="Long-term governance active">Governança de longo prazo ativa</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="deliverable-category documentation">
-                            <h4><span>📋</span><span data-pt="Documentação de Handover" data-en="Handover Documentation">Documentação de Handover</span></h4>
-                            <ul>
-                                <li data-pt="Manual operacional completo" data-en="Complete operational manual">Manual operacional completo</li>
-                                <li data-pt="Procedimentos de manutenção" data-en="Maintenance procedures">Procedimentos de manutenção</li>
-                                <li data-pt="Planos de evolução futura" data-en="Future evolution plans">Planos de evolução futura</li>
-                                <li data-pt="Contatos e responsabilidades definidos" data-en="Contacts and responsibilities defined">Contatos e responsabilidades definidos</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+    </div>
 
-        <div class="legend">
-            <h3 data-pt="Legenda das Fases" data-en="Phase Legend">Legenda das Fases</h3>
-            <div class="legend-items">
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #3498db;"></div>
-                    <span data-pt="Release 0 - Fundação" data-en="Release 0 - Foundation">Release 0 - Fundação</span>
+    <!-- Modal 4 - COP 30 -->
+    <div id="modal-4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('modal-4')">&times;</span>
+                <h2 class="modal-title" data-pt="🌐 COP 30 - Encerramento" data-en="🌐 COP 30 - Program Closure">🌐 COP 30 - Encerramento</h2>
+                <p class="modal-subtitle" data-pt="10 a 21 de novembro de 2025" data-en="November 10-21, 2025">10 a 21 de novembro de 2025</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>📋 <span data-pt="Visão Geral" data-en="Overview">Visão Geral</span></h3>
+                    <p data-pt="Conclusão oficial do programa na COP 30 em Belém. Apresentação do Relatório de Impacto 1.0, métricas finais e transferência completa para operação contínua sob o instrumento de formalização MGI-Dataprev." data-en="Official program completion at COP 30 in Belém. Presentation of Impact Report 1.0, final metrics and complete transfer to continuous operation under the MGI-Dataprev formalization instrument.">Conclusão oficial do programa na COP 30 em Belém. Apresentação do Relatório de Impacto 1.0, métricas finais e transferência completa para operação contínua sob o instrumento de formalização MGI-Dataprev.</p>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #2ecc71;"></div>
-                    <span data-pt="Release 1 - Produção DF" data-en="Release 1 - DF Production">Release 1 - Produção DF</span>
+                
+                <div class="modal-section">
+                    <h3>🎯 <span data-pt="Eventos Estratégicos" data-en="Strategic Events">Eventos Estratégicos</span></h3>
+                    <div class="deliverable-grid">
+                        <div class="deliverable-item">
+                            <h4>🇿🇦 <span data-pt="Global DPI Summit" data-en="Global DPI Summit">Global DPI Summit</span></h4>
+                            <ul class="deliverable-list">
+                                <li data-pt="4-6 de novembro - Cidade do Cabo" data-en="November 4-6 - Cape Town">4-6 de novembro - Cidade do Cabo</li>
+                                <li data-pt="Apresentação dos resultados do programa" data-en="Program results presentation">Apresentação dos resultados do programa</li>
+                                <li data-pt="Networking com líderes mundiais em DPI" data-en="Networking with global DPI leaders">Networking com líderes mundiais em DPI</li>
+                            </ul>
+                        </div>
+                        <div class="deliverable-item">
+                            <h4>🇮🇳 <span data-pt="Treinamentos MOSIP/INJI" data-en="MOSIP/INJI Training">Treinamentos MOSIP/INJI</span></h4>
+                            <ul class="deliverable-list">
+                                <li data-pt="7-11 de novembro - Bengaluru" data-en="November 7-11 - Bengaluru">7-11 de novembro - Bengaluru</li>
+                                <li data-pt="Laboratório técnico no IIIT Bangalore" data-en="Technical lab at IIIT Bangalore">Laboratório técnico no IIIT Bangalore</li>
+                                <li data-pt="Workshops na EkStep Foundation" data-en="Workshops at EkStep Foundation">Workshops na EkStep Foundation</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #f39c12;"></div>
-                    <span data-pt="Release 2 - Expansão RS" data-en="Release 2 - RS Expansion">Release 2 - Expansão RS</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #e74c3c;"></div>
-                    <span data-pt="Release 3 - Escala Nacional" data-en="Release 3 - National Scale">Release 3 - Escala Nacional</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #9b59b6;"></div>
-                    <span data-pt="Eventos Internacionais" data-en="International Events">Eventos Internacionais</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #34495e;"></div>
-                    <span data-pt="Encerramento" data-en="Closure">Encerramento</span>
+
+                <div class="modal-section">
+                    <h3>🏆 <span data-pt="Encerramento na COP 30" data-en="COP 30 Closure">Encerramento na COP 30</span></h3>
+                    <div class="adoption-info">
+                        <h4 data-pt="Marco Histórico para Sustentabilidade Digital" data-en="Historic Milestone for Digital Sustainability">Marco Histórico para Sustentabilidade Digital</h4>
+                        <div class="adoption-details-modal">
+                            <div class="adoption-detail-modal">
+                                <strong data-pt="Relatório Final:" data-en="Final Report:">Relatório Final:</strong>
+                                <span data-pt="Impacto 1.0" data-en="Impact 1.0">Impacto 1.0</span>
+                            </div>
+                            <div class="adoption-detail-modal">
+                                <strong data-pt="Status:" data-en="Status:">Status:</strong>
+                                <span data-pt="Programa Concluído" data-en="Program Completed">Programa Concluído</span>
+                            </div>
+                            <div class="adoption-detail-modal">
+                                <strong data-pt="Legado:" data-en="Legacy:">Legado:</strong>
+                                <span data-pt="Brasil como referência global" data-en="Brazil as global reference">Brasil como referência global</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -831,6 +994,37 @@
                 'Timeline - Programa DaaS Brasil' : 
                 'Timeline - DaaS Brasil Program';
         }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
 
         // Initialize with Portuguese
         document.addEventListener('DOMContentLoaded', function() {
